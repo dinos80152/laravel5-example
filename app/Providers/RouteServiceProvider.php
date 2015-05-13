@@ -22,9 +22,13 @@ class RouteServiceProvider extends ServiceProvider {
 	 */
 	public function boot(Router $router)
 	{
-		//
-		
 		parent::boot($router);
+                //
+                /**
+                 * Define Global Pattern
+                 * do "php artisan clear-compiled" for refreshing compiled files
+                 */
+                $router->pattern('id', '[0-9]+');
 	}
 
 	/**
