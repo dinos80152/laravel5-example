@@ -1,0 +1,2 @@
+# Services
+The Services directory contains various "helper" services your application needs to function. For example, the Registrar service included with Laravel is responsible for validating and creating new users of your application. Other examples might be services to interact with external APIs, metrics systems, or even services that aggregate data from your own application.
