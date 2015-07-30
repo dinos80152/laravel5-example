@@ -1,6 +1,7 @@
 /vendor
 /node_modules
 /nbproject
+/.idea
 .env
 composer.lock
 composer.phar
