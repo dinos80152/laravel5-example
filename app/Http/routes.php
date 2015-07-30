@@ -24,6 +24,8 @@
  * Note: By default, the RouteServiceProvider includes your routes.php file within a namespace group,
  * allowing you to register controller routes without specifying the full App\Http\Controllers namespace prefix.
  */
+
+
 Route::group([
     'domain' => 'm.dinolai.com',
     'prefix'=>'user/{id}',
@@ -31,13 +33,13 @@ Route::group([
     'middleware' => ['auth', 'member'],
     'where' => ['id' => '[0-9]+']
 ], function() {
-    Route::any('profile/{name?}/{option?}', ['uses' => 'UserController@show', 'as' => 'profile'])->where(['name' => '[a-z]+', 'option' => '[a-z]+']); //name for SEO
-    Route::get();
-    Route::put();
-    Route::patch();
-    Route::delete();
-    Route::options();
-    Route::match(['get', 'post'], '/');
+    // Route::any('profile/{name?}/{option?}', ['uses' => 'UserController@show', 'as' => 'profile'])->where(['name' => '[a-z]+', 'option' => '[a-z]+']); //name for SEO
+    // Route::get();
+    // Route::put();
+    // Route::patch();
+    // Route::delete();
+    // Route::options();
+    Route::match(['get', 'post'], '/', function() {});
 });
 
 Route::group([
@@ -54,8 +56,15 @@ Route::group([
  * Resource
  * Note: uri should be plural form
  */
+Route::get('users/popular', 'UserController@getPopular');
 Route::resource('users', 'UserController');
+Route::resource('users', 'UserController', [
+                'only' => ['index', 'show'],
+                'except' => ['create', 'store', 'update', 'destroy'],
+                'names' => ['create' => 'user.build']
+                ]);
 
+Route::resource('users.comments', 'UserCommentController');
 /**
  * controller
  */
@@ -65,7 +74,7 @@ Route::controllers([
 ]);
 Route::controller('users', 'UserController');
 Route::controller('users', 'UserController', [
-    'anyLogin' => 'user.login',
+    'getPopular' => 'user.popular',
 ]);
 
 /**
