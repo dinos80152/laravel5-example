@@ -11,15 +11,6 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
-
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
-
 /* vendor/laravel/framework/src/Illuminate/Routing/Router.php
  * all route is default CSRF Protection, modify in app/Http/Kernel.php
  */
@@ -68,7 +59,10 @@ Route::resource('users', 'UserController');
 /**
  * controller
  */
-Route::controllers(['users' => 'UserController', 'champions' => 'ChampionController']);
+Route::controllers([
+    'users' => 'UserController',
+    'champions' => 'ChampionController'
+]);
 Route::controller('users', 'UserController');
 Route::controller('users', 'UserController', [
     'anyLogin' => 'user.login',
