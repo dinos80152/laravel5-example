@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\User;
+use App\Events\UserRegistered;
+use Event;
+
 class UserController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-
-        $this->middleware('log', ['only' => ['store', 'update']]);
-
-        $this->middleware('subscribed', ['except' => ['store', 'update']]);
-    }
 
     public function index()
     {
@@ -24,9 +20,13 @@ class UserController extends Controller
 
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $data = $request->all();
+        unset($data['_token']);
 
+        $user = User::create($data);
+        Event::fire(new UserRegistered($user));
     }
 
     public function update()
