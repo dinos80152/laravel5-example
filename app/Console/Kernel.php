@@ -26,7 +26,71 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('inspire')->cron('* * * * *');
+
+        //minute, ex: everyMinute(), everyFiveMinute, everyTenMinute, everyThirtyMinute
+        $schedule->command('inspire')->everyMinute();
+
+        //hourly
+        $schedule->exec('php -r "echo 123;"')->hourly();
+
+        //daily, daily(), dailyAt('09:00'), twiceDaily(1, 13)
+        $schedule->command('email:send 1')
+                ->runsInEnvironment('release')
+                ->daily();
+
+        //weekly
+        $schedule->call(function () {
+            echo "Lazy Monday";
+        })->weekly()->mondays()->at('09:00');
+
+        $schedule->call(function () {
+            echo "Lazy Monday";
+        })->weeklyOn(1, '09:00');
+
+        $schedule->call(function () {
+            echo "Lazy Monday";
+        })->days([1, 3, 5]);
+
+        //monthly
+        $schedule->command('inspire')->monthly();
+
+        //yearly
+        $schedule->command('inspire')->yearly();
+
+        //when
+        $schedule->command('email:send')->everyMinute()->when(function () {
+            return true;
+        });
+
+        //overlap
+        $schedule->command('email:send')->withoutOverlapping();
+
+        //output
         $schedule->command('inspire')
-                 ->hourly();
+                ->everyMinute()
+                ->sendOutputTo('storage/app/inspire.app')
+                ->emailOutputTo('foo@example.com');
+
+        //hooks
+        $schedule->command('emails:send')
+                ->daily()
+                ->before(function () {
+                    // Task is about to start...
+                })
+                ->after(function () {
+                    // Task is complete...
+                });
+
+        /**
+         * ping urls
+         * have to insall Guzzle HTTP
+         * "guzzlehttp/guzzle": "~5.3|~6.0"
+         */
+        $schedule->command('emails:send')
+                ->daily()
+                ->pingBefore($url)
+                ->thenPing($url);
+
     }
 }
