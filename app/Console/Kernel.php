@@ -36,8 +36,8 @@ class Kernel extends ConsoleKernel
 
         //daily, daily(), dailyAt('09:00'), twiceDaily(1, 13)
         $schedule->command('email:send 1')
-                ->runsInEnvironment('release')
-                ->daily();
+                ->daily()
+                ->runsInEnvironment('local');
 
         //weekly
         $schedule->call(function () {
@@ -87,6 +87,7 @@ class Kernel extends ConsoleKernel
          * have to insall Guzzle HTTP
          * "guzzlehttp/guzzle": "~5.3|~6.0"
          */
+        $url = 'http://www.google.com';
         $schedule->command('emails:send')
                 ->daily()
                 ->pingBefore($url)
