@@ -44,6 +44,10 @@ Laravel 5 in detail
 
 ### Redis
 
+### Code Cache
+* [route caching](http://laravel.com/docs/5.1/controllers#route-caching)
+* [config caching](http://laravel.com/docs/5.1#configuration-caching)
+
 
 ## Job Services
 
