@@ -23,8 +23,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();
-        unset($data['_token']);
+        $data = $request->except(['_token']);
 
         $user = User::create($data);
         Event::fire(new UserRegistered($user));
