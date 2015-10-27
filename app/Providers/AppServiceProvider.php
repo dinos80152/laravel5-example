@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        App::bind(
+            'App\Contracts\News',
+            'App\Repsitories\EloquentNewsRepository'
+        );
     }
 }

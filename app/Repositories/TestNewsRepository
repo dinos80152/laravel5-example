@@ -1,0 +1,11 @@
+<?php
+
+use App\Contracts\News;
+
+class TestNewsReposity implements News
+{
+    public function allAble()
+    {
+        return collect(['id' => 1, 'title' => 'Test']);
+    }
+}
