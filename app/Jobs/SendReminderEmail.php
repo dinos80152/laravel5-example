@@ -52,4 +52,14 @@ class SendReminderEmail extends Job implements SelfHandling, ShouldQueue
             //
         }
     }
+
+    /**
+     * Handle a job failure.
+     *
+     * @return void
+     */
+    public function failed()
+    {
+
+    }
 }
