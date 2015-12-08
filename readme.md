@@ -19,7 +19,23 @@ Laravel 5 in detail
 
 ### Session
 
-### Eloquent ORM
+### Database
+
+* Read/Write
+* select from master
+> selectFromWriteConnection
+> onWriteConnection
+
+* Write another connection config name mysql-write
+```
+DB::connection('mysql-write')->select(...);
+```
+
+```
+User::on('mysql-write')->find(1);
+```
+
+#### Eloquent ORM
 * CRUD
 * Relations
 

@@ -2,28 +2,24 @@
 
 namespace App\Jobs;
 
-use App\User;
 use App\Jobs\Job;
-use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendReminderEmail extends Job implements SelfHandling, ShouldQueue
+class TestWithOthers extends Job implements SelfHandling, ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
-
-    protected $user;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct()
     {
-        $this->user = $user;
+        //
     }
 
     /**
@@ -31,12 +27,8 @@ class SendReminderEmail extends Job implements SelfHandling, ShouldQueue
      *
      * @return void
      */
-    public function handle(Mailer $mailer)
+    public function handle()
     {
-        $mailer->send('emails.reminder', ['user' => $this->user], function ($m) {
-            //
-        });
-
         /**
          * The release method accepts one argument:
          * the number of seconds you wish to wait until the job is made available again
@@ -53,13 +45,8 @@ class SendReminderEmail extends Job implements SelfHandling, ShouldQueue
         }
     }
 
-    /**
-     * Handle a job failure.
-     *
-     * @return void
-     */
     public function failed()
     {
-
+        // Called when the job is failing...
     }
 }

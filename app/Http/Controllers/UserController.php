@@ -11,32 +11,12 @@ use Event;
 class UserController extends Controller
 {
 
-    public function index()
-    {
-
-    }
-
-    public function show()
-    {
-
-    }
-
     public function store(Request $request)
     {
         $data = $request->except(['_token']);
 
         $user = User::create($data);
         Event::fire(new UserRegistered($user));
-    }
-
-    public function update()
-    {
-
-    }
-
-    public function getPopular()
-    {
-
     }
 
     public function sendReminderEmail(Request $request, $id)

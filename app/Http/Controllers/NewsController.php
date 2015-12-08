@@ -10,25 +10,27 @@ use App\Models\News;
 class NewsController extends Controller
 {
 
-    // protected $news;
+    protected $news;
 
-    // public function __construct(News $news) {
-    //     $this->news = $news;
-    // }
+    public function __construct(News $news) {
+        $this->news = $news;
+    }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
     public function index()
     {
         return News::allAble();
     }
 
-    // public function index()
-    // {
-    //     return $this->news->allAble();
-    // }
+    public function store(Reqeust $request)
+    {
+
+    }
+    
+
+    public function create() 
+    {
+
+        
+    }
 
 }

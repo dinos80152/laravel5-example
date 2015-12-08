@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider;
 
 class QueueServiceProvider extends ServiceProvider
@@ -20,6 +21,10 @@ class QueueServiceProvider extends ServiceProvider
          */
         Queue::failing(function ($connection, $job, $data) {
             // Notify team of failing job...
+        });
+
+        Queue::after(function ($connection, $job, $data) {
+            // Do Something
         });
     }
 

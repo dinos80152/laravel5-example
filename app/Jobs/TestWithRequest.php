@@ -8,22 +8,22 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ProcessOrder extends Job implements SelfHandling, ShouldQueue
+class TestWithRequest extends Job implements SelfHandling, ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
-    private $productId;
-    private $taxPercentage;
+    private $id;
+    private $name;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($productId, $taxPercentage)
+    public function __construct($id, $name)
     {
-        $this->productId = $productId;
-        $this->taxPercentage = $taxPercentage;
+        $this->id = $id;
+        $this->name = $name;
     }
 
     /**
@@ -33,6 +33,7 @@ class ProcessOrder extends Job implements SelfHandling, ShouldQueue
      */
     public function handle()
     {
-        //
+        echo 'id:' . $this->id;
+        echo 'name:' . $this->name;
     }
 }

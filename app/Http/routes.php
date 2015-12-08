@@ -26,6 +26,14 @@
  */
 
 
+Route::group(['prefix' => 'queue'], function() {
+    Route::get('/', 'QueueController@index');
+    Route::get('fail', 'QueueController@fail');
+    Route::get('{id}', 'QueueController@show');
+    Route::post('/', 'QueueController@store');
+});
+
+
 Route::group([
     'domain' => 'm.dinolai.com',
     'prefix'=>'user/{id}',
@@ -70,7 +78,7 @@ Route::resource('users.comments', 'UserCommentController');
  */
 Route::controllers([
     'users' => 'UserController',
-    'champions' => 'ChampionController'
+    'queues' => 'QueueController'
 ]);
 Route::controller('users', 'UserController');
 Route::controller('users', 'UserController', [
