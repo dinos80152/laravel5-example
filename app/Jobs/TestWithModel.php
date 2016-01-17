@@ -6,10 +6,9 @@ use App\Jobs\Job;
 use App\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class TestWithModel extends Job implements SelfHandling, ShouldQueue
+class TestWithModel extends Job ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 

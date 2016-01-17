@@ -5,12 +5,11 @@ namespace App\Jobs;
 use App\Jobs\Job;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Log;
 use App\User;
 
-class TestWithFailed extends Job implements SelfHandling, ShouldQueue
+class TestWithFailed extends Job ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;
 
