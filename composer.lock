@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8f77a4f1047376636dadd404013261fd",
-    "content-hash": "7a85b040fb468f86032d33d73b9e4ff3",
+    "hash": "af9ac60190f357b0d483bdcd37141884",
+    "content-hash": "7d30f9e20b93e91cdebc97391e95fd6c",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -216,27 +216,21 @@
         },
         {
             "name": "iron-io/iron_mq",
-            "version": "4.0.1",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iron-io/iron_mq_php.git",
-                "reference": "3302ad9be1a532ed2e413a082e251ed128816f37"
+                "reference": "9906a59885c8b715ac77346b1538a8a1c60300e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iron-io/iron_mq_php/zipball/3302ad9be1a532ed2e413a082e251ed128816f37",
-                "reference": "3302ad9be1a532ed2e413a082e251ed128816f37",
+                "url": "https://api.github.com/repos/iron-io/iron_mq_php/zipball/9906a59885c8b715ac77346b1538a8a1c60300e1",
+                "reference": "9906a59885c8b715ac77346b1538a8a1c60300e1",
                 "shasum": ""
             },
             "require": {
                 "iron-io/iron_core": "1.*",
                 "php": ">=5.2.0"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "~1.5",
-                "phpmd/phpmd": "~2.2",
-                "phpunit/phpunit": "4.6.*",
-                "squizlabs/php_codesniffer": "~2.3"
             },
             "type": "library",
             "autoload": {
@@ -254,6 +248,10 @@
                     "email": "alexander@iron.io",
                     "homepage": "http://iron.io",
                     "role": "Developer"
+                },
+                {
+                    "name": "Tino Ehrich",
+                    "email": "tino@bigpun.me"
                 }
             ],
             "description": "Client binding for IronMQ (hosted message queue)",
@@ -263,7 +261,7 @@
                 "iron",
                 "iron_mq"
             ],
-            "time": "2015-07-23 21:55:36"
+            "time": "2015-02-12 20:05:42"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -537,6 +535,55 @@
                 "laravel"
             ],
             "time": "2016-01-13 20:29:10"
+        },
+        {
+            "name": "laravelcollective/iron-queue",
+            "version": "v5.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/iron-queue.git",
+                "reference": "ce729633fa70b6ebf77fec04791824732f9cd0ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/iron-queue/zipball/ce729633fa70b6ebf77fec04791824732f9cd0ad",
+                "reference": "ce729633fa70b6ebf77fec04791824732f9cd0ad",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "5.2.*",
+                "illuminate/contracts": "5.2.*",
+                "illuminate/encryption": "5.2.*",
+                "illuminate/http": "5.2.*",
+                "illuminate/queue": "5.2.*",
+                "illuminate/support": "5.2.*",
+                "iron-io/iron_mq": "~2.0",
+                "jeremeamia/superclosure": "~2.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Collective\\IronQueue\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "IronMQ support for the Laravel queue.",
+            "homepage": "http://laravelcollective.com",
+            "time": "2016-01-01 16:28:53"
         },
         {
             "name": "league/flysystem",
