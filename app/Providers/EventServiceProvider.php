@@ -19,6 +19,15 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     /**
+     * The subscriber classes to register.
+     *
+     * @var array
+     */
+    protected $subscribe = [
+        'App\Listeners\UserEventListener',
+    ];
+
+    /**
      * Register any other events for your application.
      *
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events
@@ -28,6 +37,14 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot($events);
 
-        //
+        // register events manually with the event dispatcher
+        $events->listen('event.name', function ($foo, $bar) {
+
+        });
+
+        // Wildcard Event Listeners
+        $events->listen('event.*', function (array $data) {
+
+        });
     }
 }

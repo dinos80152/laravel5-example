@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "iron-io/iron_mq": "~2.0",
         "pda/pheanstalk": "~3.0",
-        "laravelcollective/iron-queue": "^5.2"
+        "laravelcollective/iron-queue": "^5.2",
+        "predis/predis": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
