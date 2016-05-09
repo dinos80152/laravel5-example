@@ -1,29 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class RestfulController extends Controller
 {
-
-    public function __construct()
-    {
-        // Controller Middleware
-        $this->middleware('auth');
-
-        $this->middleware('log', ['only' => ['store', 'update']]);
-
-        $this->middleware('subscribed', ['except' => ['store', 'update']]);
-    }
-
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -33,7 +22,7 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -43,8 +32,8 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
-     * @return Response
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -55,7 +44,7 @@ class AdminController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -66,7 +55,7 @@ class AdminController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
@@ -76,9 +65,9 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
@@ -89,9 +78,14 @@ class AdminController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        //
+    }
+
+    public function popular()
     {
         //
     }

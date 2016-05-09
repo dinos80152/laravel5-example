@@ -11,8 +11,36 @@
 |
 */
 
+/*
+ * Parameters
+ * Note: Route parameters cannot contain the - character. Use an underscore (_) instead.
+ * 
+ * Where
+ * Global patterns define in app/Providers/RouteServiceProvider.php (function boot)
+ * 
+ * Namespace
+ * Note: By default, the RouteServiceProvider includes your routes.php file within a namespace group,
+ * allowing you to register controller routes without specifying the full App\Http\Controllers namespace prefix.
+ *
+ * Route Caching
+ * Route caching does not work with Closure based routes. To use route caching, you must convert any Closure routes to use controller classes.
+ */
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix' => 'api', 'middleware' => ['api']], function() {
+
+    Route::get('popular', 'RestfulController@popular');
+    Route::resource('restfuls', 'RestfulController');
+    Route::resource('restfuls', 'RestfulController', [
+        'only' => ['index', 'show'],
+        'name' => ['index' => 'restful.list']
+    ]);
+    Route::resource('restfuls', 'RestfulController', ['except' => [
+        'create', 'store', 'edit', 'update', 'destroy'
+    ]]);
 });
 
 /*
@@ -25,22 +53,6 @@ Route::get('/', function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
-/* 
- * vendor/laravel/framework/src/Illuminate/Routing/Router.php
- * all route is default CSRF Protection, modify in app/Http/Kernel.php
- */
-
-/*
- * Parameters
- * Note: Route parameters cannot contain the - character. Use an underscore (_) instead.
- * Where
- * Global patterns define in app/Providers/RouteServiceProvider.php (function boot)
- * Namespace
- * Note: By default, the RouteServiceProvider includes your routes.php file within a namespace group,
- * allowing you to register controller routes without specifying the full App\Http\Controllers namespace prefix.
- */
-
 Route::group(['middleware' => ['web']], function () {
     
     // Naming by name method
