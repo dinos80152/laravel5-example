@@ -14,10 +14,10 @@
 /*
  * Parameters
  * Note: Route parameters cannot contain the - character. Use an underscore (_) instead.
- * 
+ *
  * Where
  * Global patterns define in app/Providers/RouteServiceProvider.php (function boot)
- * 
+ *
  * Namespace
  * Note: By default, the RouteServiceProvider includes your routes.php file within a namespace group,
  * allowing you to register controller routes without specifying the full App\Http\Controllers namespace prefix.
@@ -54,7 +54,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['api']], function() {
 |
 */
 Route::group(['middleware' => ['web']], function () {
-    
+
     // Naming by name method
     Route::get('index', function() {
         return view('index');
@@ -65,6 +65,12 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('fail', 'QueueController@fail');
         Route::get('{id}', 'QueueController@show');
         Route::post('/', 'QueueController@store');
+    });
+
+    Route::group(['prefix' => 'render'], function() {
+        Route::get('react', 'RenderController@react');
+        Route::get('php', 'RenderController@php');
+        Route::get('categories', 'RenderController@categories');
     });
 
     Route::group([
@@ -81,7 +87,7 @@ Route::group(['middleware' => ['web']], function () {
         // Route::patch();
         // Route::delete();
         // Route::options();
-         
+
         // route name "mobile::index"
         Route::match(['get', 'post'], '/', function() {})->name('index');
     });
@@ -125,7 +131,7 @@ Route::group(['middleware' => ['web']], function () {
      * ---------------------
      * Route Model Binding
      * ---------------------
-     * 
+     *
      * Laravel route model binding provides a convenient way to inject model instances into your routes.
      */
     Route::model('user/{user}', function (App\User $user) {
