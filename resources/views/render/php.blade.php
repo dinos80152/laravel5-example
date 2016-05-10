@@ -12,7 +12,7 @@
     <div id="example">
         <div data-reactroot="">
             <select>
-                @foreach($categories as $mainCategory)
+                @foreach($mobileCategories as $mainCategory)
                 <option>{{ $mainCategory->name }}</option>
                 @endforeach
             </select>

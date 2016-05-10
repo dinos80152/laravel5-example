@@ -8,6 +8,14 @@ use App\Http\Requests;
 
 class RenderController extends Controller
 {
+
+    protected $categories;
+
+    public function __construct()
+    {
+        $this->categories = json_decode(file_get_contents(public_path('data/categories.json')));
+    }
+
     public function react()
     {
         return view('render.react');
@@ -15,18 +23,15 @@ class RenderController extends Controller
 
     public function categories()
     {
-        $categories = json_decode(file_get_contents(storage_path('app/category.json')));
-        return response()->json($categories);
+        return response()->json($this->categories);
     }
 
     public function php()
     {
-        $categories = json_decode(file_get_contents(storage_path('app/category.json')));
-
-        $categories = array_values(array_filter($categories, function($category) {
+        $mobileCategories = array_values(array_filter($this->categories, function($category) {
             return $category->game_type === "mobile";
         }));
 
-        return view('render.php', compact('categories'));
+        return view('render.php', compact('mobileCategories'));
     }
 }
